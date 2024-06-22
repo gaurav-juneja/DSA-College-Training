@@ -3,7 +3,7 @@ using namespace std;
 
 void multiple(int num, int upto, int count)
 {
-    if (count>num)
+    if (count > upto)
     {
         return;
     }
@@ -14,10 +14,10 @@ void multiple(int num, int upto, int count)
 
 int main()
 {
-    int num, upto,ct=1;
+    int num, upto, count = 1;
     cout << "Enter the Number you want multiple of: ";
     cin >> num;
-    cout << "Enter the Number upto which you want multiple: ";
+    cout << "Enter the Number of multiples you want of " << num << ": ";
     cin >> upto;
-    multiple(num, upto,ct);
+    multiple(num, upto, count);
 }
