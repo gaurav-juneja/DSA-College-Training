@@ -7,6 +7,8 @@ int main()
     cout << "Enter the number : ";
     cin >> n;
 
+    /* Method - 1
+
     for (row = 0; row < n; row++)
     {
         for (int col = 0; col < n; col++)
@@ -51,4 +53,28 @@ int main()
         }
         cout << endl;
     }
+    */
+    
+    //Method-2
+    for (int row = 0; row < n; row++)
+    {
+        for (int col = 0; col < n; col++)
+        {
+            if(
+            (row==(n/2) || col==(n/2))
+            || (col==0 && row<n/2)
+            || (row==0 && col>n/2)
+            || (row==n-1 && col<n/2)
+            || (col==n-1 && row>n/2)
+            )
+            {
+                cout<<"*";
+            }
+            else
+                cout<<" ";
+        }
+        cout<<endl;
+    }
 }
+
+
