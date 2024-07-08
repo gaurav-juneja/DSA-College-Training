@@ -1,45 +1,44 @@
 #include <iostream>
+#include <vector>
+#include <unordered_map>
 using namespace std;
 
 int main()
 {
-    int n, arr[n];
+    int n;
     cin >> n;
-    int sum = 0;
+    vector<long long> a(n);
+
+    unordered_map<long long, int> freq;
+    long long totalsum = 0;
+
     for (int i = 0; i < n; i++)
     {
-        cin >> arr[i];
-        sum += arr[i];
+        cin >> a[i];
+        freq[a[i]]++;
+        totalsum += a[i];
     }
 
-    bool good = false;
+    vector<int> good_index;
 
     for (int i = 0; i < n; i++)
     {
-        int remove = sum - arr[i];
+        long long current = a[i];
+        long long newsum = totalsum - current;
 
-        for (int j = 0; j < n; j++)
+        if (newsum % 2 == 0)
         {
-            if (i != j)
+            long long required = newsum / 2;
+            if ((required == current && freq[required] > 1) || (required != current && freq[required] > 0))
             {
-                int newSum = 0;
-                for (int k = 0; k < n; k++)
-                {
-                    if (k != i && k != j)
-                    {
-                        newSum += arr[k];
-                    }
-                }
-                if (newSum == arr[j])
-                {
-                    good = true;
-                    break;
-                }
-            }
-            if(good)
-            {
-                cout<<j<<" ";
+                good_index.push_back(i + 1);
             }
         }
     }
+    cout << good_index.size() << endl;
+    for (int index : good_index)
+    {
+        cout << index << " ";
+    }
+    return 0;
 }
