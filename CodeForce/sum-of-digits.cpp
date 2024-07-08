@@ -1,36 +1,38 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
-int digit(int n)
+int digit(string n, int &count)
 {
-    int count = 0;
-    if (n == 0)
+    if (n.length() == 1)
     {
         return 0;
     }
+
     int sum = 0;
-    while(n>0)
+    for (char c : n)
     {
-    sum += n%10;
-    n=n/10;
+        sum += c - '0';
     }
-    if(sum<10)
+    count++;
+    if (sum < 10)
     {
-        return sum;
+        return count;
     }
     else
     {
-        return digit(sum);
+        return digit(to_string(sum), count);
     }
-    
+    return count;
 }
 
 int main()
 {
-    int n;
+    string n;
     cout << "Enter a Number: ";
     cin >> n;
-    int sum = digit(n);
-    cout << "Sum of digits of a number is: " << sum;
-    
+    int count = 0;
+    int sum = digit(n, count);
+    // cout << "Sum of digits of a number is: " << sum << endl;
+    cout << "Number of digits in a number is: " << count;
 }
