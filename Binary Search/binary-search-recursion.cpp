@@ -16,7 +16,6 @@ int binarySearch(int arr[], int left, int right, int target)
 
         return binarySearch(arr, mid + 1, right, target);
     }
-
     // Element is not present in the array
     return -1;
 }
